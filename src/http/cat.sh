@@ -14,15 +14,15 @@ function http::cat() {
 
     if runtime::command_exist curl; then
         if log::is_output 4; then
-            curl -sSL "${url}"
-        else
             curl -L "${url}"
+        else
+            curl -sSL "${url}"
         fi
     elif runtime::command_exist wget; then
         if log::is_output 4; then
-            wget -O - "${url}"
-        else
             wget -q -O - "${url}"
+        else
+            wget -O - "${url}"
         fi
     else
         log::error "Neither curl nor wget are available"
